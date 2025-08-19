@@ -1,6 +1,9 @@
 npm run build
 npm run start:cli hello runs the hello command
 
+
+https://docs.google.com/document/d/1tMFodUXAQKNTCT2GpM1veGRZlASwzSAx/edit
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
