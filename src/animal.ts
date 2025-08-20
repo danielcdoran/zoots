@@ -4,14 +4,14 @@ export class Animal {
     name: string;
     protected health: number;
 
-        constructor(name: string); 
-    constructor(name: string, health: number); 
-     
+    constructor(name: string);
+    constructor(name: string, health: number);
+
     // Implementation of the constructor 
-    constructor(name: string, health?: number) { 
-        this.name = name; 
+    constructor(name: string, health?: number) {
+        this.name = name;
         this.health = health ?? 100; // Default age to 0 if not provided 
-    } 
+    }
 
     // public static animalName(p1: string): Animal {
     //     const cls = new Animal();
@@ -41,7 +41,7 @@ export class Animal {
 
 export class Monkey extends Animal {
     constructor(name: string, health?: number) {
-        super(name,health);
+        super(name, health);
     }
     //     public static monkeyName(p1: string): Monkey {
     //     const cls = Animal.animalName(p1)
@@ -62,10 +62,13 @@ export class Monkey extends Animal {
 
 }
 
-export class Horse extends Animal {
+export class Giraffe extends Animal {
     // constructor(name: string) {
     //     super(name);
     // }
+    constructor(name: string, health?: number) {
+        super(name, health);
+    }
     move(distanceInMeters = 45) {
         console.log("Galloping...");
         super.move(distanceInMeters);

@@ -1,6 +1,6 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { AppService } from './app.service';
-import { Animal, Monkey, Horse } from "./animal";
+import { Animal, Monkey, Giraffe } from "./animal";
 
 @Command({ name: 'hello', description: 'a hello command' })
 export class HelloCommand extends CommandRunner {
@@ -11,7 +11,7 @@ export class HelloCommand extends CommandRunner {
   async run(): Promise<void> {
     console.log(this.appService.getHello());
     let sam = new Monkey("Sammy the Python");
-    let tom: Animal = new Horse("Tommy the Palomino");
+    let tom: Animal = new Giraffe("Tommy the Palomino");
 
     sam.move();
 
