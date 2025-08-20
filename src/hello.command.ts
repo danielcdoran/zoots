@@ -1,6 +1,7 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { AppService } from './app.service';
-import { Animal, Monkey, Giraffe } from "./animal";
+import { Animal, Giraffe } from "./animal";
+import { Monkey } from "./monkey";
 
 @Command({ name: 'hello', description: 'a hello command' })
 export class HelloCommand extends CommandRunner {
@@ -12,11 +13,14 @@ export class HelloCommand extends CommandRunner {
     console.log(this.appService.getHello());
     let sam = new Monkey("Sammy the Python");
     let tom: Animal = new Giraffe("Tommy the Palomino");
-
-    sam.move();
-
-    sam.reduceHealth();
-        console.log(sam.getHealth());
+debugger
+    var objectArray: Array<Animal> = [sam, tom]
+    var i: number
+    for (i = 0; i < 10; i++) {
+      // console.log(i)
+      objectArray.forEach(x => x.reduceHealth())
+      objectArray.forEach(x => console.log(x))
+    }
   }
 
   @Option({
