@@ -18,7 +18,8 @@ debugger
     var i: number
     for (i = 0; i < 10; i++) {
       // console.log(i)
-      objectArray.forEach(x => x.reduceHealth())
+      for (let i=0 ; i <objectArray.length ; i++)
+        objectArray[i] = objectArray[i].reduceHealth()
       objectArray.forEach(x => console.log(x))
     }
   }
