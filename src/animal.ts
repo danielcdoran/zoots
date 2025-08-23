@@ -1,7 +1,7 @@
 import { pbkdf2 } from "crypto";
 
 export class Animal {
-    name: string;
+    readonly name: string;
     protected health: number;
 
     constructor(name: string);
@@ -17,8 +17,8 @@ export class Animal {
         return this.health;
     }
     // public reduceHealth(): void {
-    reduceHealth(): void {
-        this.health = 0.9 * this.health;
+    reduceHealth(): Animal {
+        return new Animal(this.name, 0.9 * this.health);
     }
 }
 
@@ -28,7 +28,7 @@ export class Giraffe extends Animal {
         super("Giraffe", health);
     }
     getHealth(): number { return super.getHealth() }
-    reduceHealth() {
-        super.reduceHealth();
+    reduceHealth(): Animal {
+        return new Giraffe(this.name,0.9 * this.health);
     }
 }
