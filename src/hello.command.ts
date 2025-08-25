@@ -10,18 +10,34 @@ export class HelloCommand extends CommandRunner {
   }
 
   async run(): Promise<void> {
-    console.log(this.appService.getHello());
+
+
+   
     let sam = new Monkey("Sammy the Python");
     let tom: Animal = new Giraffe("Tommy the Palomino");
-debugger
     var objectArray: Array<Animal> = [sam, tom]
     var i: number
     for (i = 0; i < 10; i++) {
-      // console.log(i)
+      console.log(i)
       for (let i=0 ; i <objectArray.length ; i++)
         objectArray[i] = objectArray[i].reduceHealth()
       objectArray.forEach(x => console.log(x))
     }
+
+
+    // console.log(this.appService.getHello());
+    // let sam = new Monkey("Sammy the Python");
+    // let tom: Animal = new Giraffe("Tommy the Palomino");   
+    // var objectArray: Array<Animal> = [sam] //, tom]
+    // var i: number
+    // for (i = 0; i < 10; i++) {
+    //   console.log(i)
+    //   for (let i=0 ; i <objectArray.length ; i++)
+    //     objectArray[i].lessHealth({ tag: "AliveFeed"})
+    //   objectArray.forEach(x => console.log(x))
+    // }
+
+     console.log(this.appService.getHello());
   }
 
   @Option({

@@ -1,4 +1,5 @@
 import { pbkdf2 } from "crypto";
+import {Action} from "./monkey" ;
 
 export class Animal {
     readonly name: string;
@@ -12,7 +13,7 @@ export class Animal {
         this.name = name;
         this.health = health ?? 100; // Default age to 0 if not provided 
     }
-
+    lessHealth(action: Action): void {}
     getHealth(): number {
         return this.health;
     }
