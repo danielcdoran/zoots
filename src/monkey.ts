@@ -22,63 +22,43 @@ export class Monkey extends Animal {
 
     constructor(name: string, health?: number,state?: State) {
         super("Monkey", health, state);
-
     }
-    // currentState: State;
-    //     this.currentState = {tag: "Alive", health: 100}
-    // this.currentState.tag = "Alive";
-    // lessHealth(action: Action): void {
-    //     let val = 0
-    //     val = this.currentState.health
-    //     switch (action.tag) {
-    //         case "AliveFeed":
-    //             val = val * 0.9
-    //             if (val < 70) {
-    //                 this.currentState = { tag: "Dead", health: val };
-    //             }
-    //             this.currentState =  { tag: "Alive", health: val };
-    //             break;
-    //         case "DeadFeed":
-    //             this.currentState =  { tag: "Dead", health: val };
-    //     }
-    // }
-
-    // lessHealth2(): State {
-    //     let val = 0
-    //     val = this.currentState.health
-    //     switch (this.currentState.tag) {
-    //         case "Alive":
-    //             val = val * 0.9
-    //             console.log(val)
-    //             if (val < 70) {
-    //                 return { tag: "Dead", health: val };
-    //             }
-    //             return { tag: "Alive", health: val };
-    //             break;
-    //         case "Dead":
-    //             return { tag: "Dead", health: val };
-    //     }
-    // }
+    lessHealth(): State {
+        let val = 0
+        val = this.currentState.health
+        switch (this.currentState.tag) {
+            case "Alive":
+                val = val * 0.9
+                console.log(val)
+                if (val < 70) {
+                    return { tag: "Dead", health: val };
+                }
+                return { tag: "Alive", health: val };
+                break;
+            case "Dead":
+                return { tag: "Dead", health: val };
+        }
+    }
 
     getHealth(): number {
         return super.getHealth();
     }
 
     reduceHealth(): Animal {
-        // var stuff: State ;
-        // stuff = this.lessHealth2() ;
-        // console.log(stuff)
-        var val: Animal = new Monkey(this.name, 0.9 * this.health)
+        var stuff: State = { tag: "Dead", health: 100 };;
+        // stuff = this.lessHealth() ;
+        console.log(stuff)
+        var val: Animal = new Monkey(this.name, 0.9 * this.health,stuff)
         if (val.getHealth() < 70) {
-            return new MonkeyDeath("MonkeyDeath", val.getHealth()) //super.reduceHealth();
+            return new MonkeyDeath("MonkeyDeath", val.getHealth(),stuff) //super.reduceHealth();
         }
         return val
     }
 }
 
 export class MonkeyDeath extends Monkey {
-    constructor(name: string, health?: number) {
-        super("MonkeyDead", health);
+    constructor(name: string, health?: number,state?: State) {
+        super("MonkeyDead", health, state);
     }
 
     getHealth(): number {

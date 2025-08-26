@@ -24,10 +24,10 @@ export class Animal {
 export class Giraffe extends Animal {
 
     constructor(name: string, health?: number,state?: State) {
-        super("Giraffe", health,state);
+        super("Giraffe", health, state);
     }
     getHealth(): number { return super.getHealth() }
     reduceHealth(): Animal {
-        return new Giraffe(this.name,0.9 * this.health);
+        return new Giraffe(this.name,0.9 * this.health,this.currentState);
     }
 }
