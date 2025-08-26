@@ -43,28 +43,31 @@ export class Monkey extends Animal {
     //     }
     // }
 
-    lessHealth2(): State {
-        let val = 0
-        val = this.currentState.health
-        switch (this.currentState.tag) {
-            case "Alive":
-                val = val * 0.9
-                console.log(val)
-                if (val < 70) {
-                    return { tag: "Dead", health: val };
-                }
-                return { tag: "Alive", health: val };
-                break;
-            case "Dead":
-                return { tag: "Dead", health: val };
-        }
-    }
+    // lessHealth2(): State {
+    //     let val = 0
+    //     val = this.currentState.health
+    //     switch (this.currentState.tag) {
+    //         case "Alive":
+    //             val = val * 0.9
+    //             console.log(val)
+    //             if (val < 70) {
+    //                 return { tag: "Dead", health: val };
+    //             }
+    //             return { tag: "Alive", health: val };
+    //             break;
+    //         case "Dead":
+    //             return { tag: "Dead", health: val };
+    //     }
+    // }
 
     getHealth(): number {
         return super.getHealth();
     }
 
     reduceHealth(): Animal {
+        // var stuff: State ;
+        // stuff = this.lessHealth2() ;
+        // console.log(stuff)
         var val: Animal = new Monkey(this.name, 0.9 * this.health)
         if (val.getHealth() < 70) {
             return new MonkeyDeath("MonkeyDeath", val.getHealth()) //super.reduceHealth();
