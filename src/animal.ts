@@ -6,10 +6,6 @@ export class Animal {
     protected health: number;
     currentState: State = {tag: "Alive", health: 100}
 
-    // constructor(name: string);
-    // constructor(name: string, health?: number,state?: State);
-
-    // Implementation of the constructor 
     constructor(name: string, health?: number,state?: State) {
         this.name = name;
         this.health = health ?? 100; // Default age to 0 if not provided 
