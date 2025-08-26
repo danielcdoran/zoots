@@ -25,17 +25,17 @@ type TaggedState<T extends string> = { tag: T };
 export type Alive = TaggedState<"Alive"> & { health: number };
 export type Dead = TaggedState<"Dead"> & { health: number };
 
-type State = Alive | Dead;
+export type State = Alive | Dead;
 
 export class Monkey extends Animal {
 
     constructor(name: string, health?: number) {
-        super("Monkey", health);
-        // this.currentState.health = 100
-        // this.currentState.tag = "Alive";
+        super("Monkey",health);
+
     }
     // currentState: State;
-
+    //     this.currentState = {tag: "Alive", health: 100}
+        // this.currentState.tag = "Alive";
     // lessHealth(action: Action): void {
     //     let val = 0
     //     val = this.currentState.health

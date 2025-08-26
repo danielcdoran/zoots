@@ -1,8 +1,10 @@
 import { pbkdf2 } from "crypto";
+import { Monkey, State } from "./monkey"
 
 export class Animal {
     readonly name: string;
     protected health: number;
+    currentState: State = {tag: "Alive", health: 100}
 
     constructor(name: string);
     constructor(name: string, health: number);
