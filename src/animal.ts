@@ -6,13 +6,14 @@ export class Animal {
     protected health: number;
     currentState: State = {tag: "Alive", health: 100}
 
-    constructor(name: string);
-    constructor(name: string, health: number);
+    // constructor(name: string);
+    // constructor(name: string, health?: number,state?: State);
 
     // Implementation of the constructor 
-    constructor(name: string, health?: number) {
+    constructor(name: string, health?: number,state?: State) {
         this.name = name;
         this.health = health ?? 100; // Default age to 0 if not provided 
+        this.currentState = state ;
     }
 
     getHealth(): number {
@@ -20,14 +21,14 @@ export class Animal {
     }
     // public reduceHealth(): void {
     reduceHealth(): Animal {
-        return new Animal(this.name, 0.9 * this.health);
+        return new Animal(this.name, 0.9 * this.health,this.currentState);
     }
 }
 
 export class Giraffe extends Animal {
 
-    constructor(name: string, health?: number) {
-        super("Giraffe", health);
+    constructor(name: string, health?: number,state?: State) {
+        super("Giraffe", health,state);
     }
     getHealth(): number { return super.getHealth() }
     reduceHealth(): Animal {
