@@ -2,12 +2,6 @@ import { pbkdf2 } from "crypto";
 import { Animal } from "./animal"
 import { ModuleRef } from "@nestjs/core";
 
-
-
-// // export type Alive = TaggedState<"Alive"> & {health: number}; 
-// // export type Dead = TaggedState<"Dead"> & {health: number}; 
-// // export type State = Alive | Dead ;
-
 // type TaggedAction<T extends string> = { tag: T };
 // export type AliveFeed = TaggedAction<"AliveFeed">;
 // export type DeadFeed = TaggedAction<"DeadFeed">;
@@ -18,9 +12,6 @@ import { ModuleRef } from "@nestjs/core";
 
 // export type Action = AliveFeed | DeadFeed
 
-// // class test<Alive> {
-
-// // }
 type TaggedState<T extends string> = { tag: T };
 export type Alive = TaggedState<"Alive"> & { health: number };
 export type Dead = TaggedState<"Dead"> & { health: number };
@@ -29,13 +20,13 @@ export type State = Alive | Dead;
 
 export class Monkey extends Animal {
 
-    constructor(name: string, health?: number) {
-        super("Monkey",health);
+    constructor(name: string, health?: number,state?: State) {
+        super("Monkey", health, state);
 
     }
     // currentState: State;
     //     this.currentState = {tag: "Alive", health: 100}
-        // this.currentState.tag = "Alive";
+    // this.currentState.tag = "Alive";
     // lessHealth(action: Action): void {
     //     let val = 0
     //     val = this.currentState.health
@@ -51,6 +42,24 @@ export class Monkey extends Animal {
     //             this.currentState =  { tag: "Dead", health: val };
     //     }
     // }
+
+    lessHealth2(): State {
+        let val = 0
+        val = this.currentState.health
+        switch (this.currentState.tag) {
+            case "Alive":
+                val = val * 0.9
+                console.log(val)
+                if (val < 70) {
+                    return { tag: "Dead", health: val };
+                }
+                return { tag: "Alive", health: val };
+                break;
+            case "Dead":
+                return { tag: "Dead", health: val };
+        }
+    }
+
     getHealth(): number {
         return super.getHealth();
     }
