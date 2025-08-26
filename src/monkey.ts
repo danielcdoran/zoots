@@ -45,14 +45,12 @@ export class Monkey extends Animal {
     }
 
     reduceHealth(): Animal {
-        var stuff: State = { tag: "Dead", health: 100 };;
-        // stuff = this.lessHealth() ;
-        console.log(stuff)
-        var val: Animal = new Monkey(this.name, 0.9 * this.health,stuff)
-        if (val.getHealth() < 70) {
-            return new MonkeyDeath("MonkeyDeath", val.getHealth(),stuff) //super.reduceHealth();
-        }
-        return val
+        // this.currentState =  { tag: "Alive", health: 100 };
+        this.currentState = this.lessHealth() ;
+        console.log(this.currentState);
+                console.log(typeof(this.currentState));
+        var val: Animal = new Monkey(this.name, 0.9 * this.health,this.currentState);
+        return val;
     }
 }
 
