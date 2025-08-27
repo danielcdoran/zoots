@@ -1,6 +1,11 @@
 npm run build
 npm run start:cli hello runs the hello command
 
+using this
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/workspace",
+
+means git wirks
 
 https://docs.google.com/document/d/1tMFodUXAQKNTCT2GpM1veGRZlASwzSAx/edit
 

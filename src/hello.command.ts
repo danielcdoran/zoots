@@ -11,9 +11,8 @@ export class HelloCommand extends CommandRunner {
 
   async run(): Promise<void> {
     console.log(this.appService.getHello());
-    let sam = new Monkey("Sammy the Python",100,{ tag: "Alive", health: 100 });
+    let sam = new Monkey("Sammy the Python",{ tag: "Alive", health: 100 });
     let tom: Animal = new Giraffe("Tommy the Palomino");
-debugger
     var objectArray: Array<Animal> = [sam, tom]
     var i: number
     for (i = 0; i < 10; i++) {

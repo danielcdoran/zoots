@@ -20,8 +20,8 @@ export type State = Alive | Dead;
 
 export class Monkey extends Animal {
 
-    constructor(name: string, health?: number,state?: State) {
-        super("Monkey", health, state);
+    constructor(name: string,state?: State) {
+        super("Monkey", state);
     }
     lessHealth(): State {
         let val = 0
@@ -49,21 +49,21 @@ export class Monkey extends Animal {
         this.currentState = this.lessHealth() ;
         console.log(this.currentState);
                 console.log(typeof(this.currentState));
-        var val: Animal = new Monkey(this.name, 0.9 * this.health,this.currentState);
+        var val: Animal = new Monkey(this.name,this.currentState);
         return val;
     }
 }
 
 export class MonkeyDeath extends Monkey {
-    constructor(name: string, health?: number,state?: State) {
-        super("MonkeyDead", health, state);
+    constructor(name: string,state?: State) {
+        super("MonkeyDead", state);
     }
 
     getHealth(): number {
         return super.getHealth();
     }
     reduceHealth(): Animal {
-        return new MonkeyDeath("MonkeyDeath", this.getHealth());
+        return new MonkeyDeath("MonkeyDeath", this.currentState);
     }
 
 }
