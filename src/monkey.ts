@@ -38,6 +38,9 @@ export class Monkey extends Animal {
         var val: Animal = new Monkey(this.name,this.currentState);
         return val;
     }
+        increaseHealth(): Animal {
+        return new Animal(this.name, this.currentState);
+    }
 }
 
 export class MonkeyDeath extends Monkey {

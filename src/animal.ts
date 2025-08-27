@@ -1,5 +1,5 @@
 import { pbkdf2 } from "crypto";
-import { Monkey} from "./monkey"
+import { Monkey } from "./monkey"
 
 // type TaggedAction<T extends string> = { tag: T };
 // export type AliveFeed = TaggedAction<"AliveFeed">;
@@ -20,12 +20,12 @@ export type State = Alive | Dead;
 export class Animal {
     readonly name: string;
     // protected health: number;
-    currentState: State = {tag: "Alive", health: 100}
+    currentState: State = { tag: "Alive", health: 100 }
 
-    constructor(name: string,state?: State) {
+    constructor(name: string, state?: State) {
         this.name = name;
         // this.health = health ?? 100; // Default age to 0 if not provided 
-        this.currentState = state ;
+        this.currentState = state;
     }
 
     getHealth(): number {
@@ -33,11 +33,11 @@ export class Animal {
     }
     // public reduceHealth(): void {
     reduceHealth(): Animal {
-        return new Animal(this.name,this.currentState);
+        return new Animal(this.name, this.currentState);
     }
 
-        increaseHealth(): Animal {
-        return new Animal(this.name,this.currentState);
+    increaseHealth(): Animal {
+        return new Animal(this.name, this.currentState);
     }
 }
 
