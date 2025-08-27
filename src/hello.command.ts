@@ -1,6 +1,6 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { AppService } from './app.service';
-import { Animal} from "./animal";
+import { Animal } from "./animal";
 import { Monkey } from "./monkey";
 import { Giraffe } from "./giraffe";
 
@@ -12,16 +12,16 @@ export class HelloCommand extends CommandRunner {
 
   async run(): Promise<void> {
     console.log(this.appService.getHello());
-    let sam = new Monkey("Sammy the Python",{ tag: "Alive", health: 100 });
-    let tom: Animal = new Giraffe("Tommy the Palomino",{ tag: "Alive", health: 100 });
+    let sam = new Monkey("Sammy the Python", { tag: "Alive", health: 100 });
+    let tom: Animal = new Giraffe("Tommy the Palomino", { tag: "Alive", health: 100 });
     var objectArray: Array<Animal> = [sam, tom]
     var i: number
-    for (i = 0; i < 10; i++) {
-      // console.log(i)
-      for (let i=0 ; i <1 ; i++)
-        objectArray[i] = objectArray[i].increaseHealth()        
+    for (let j = 0; j < 10; j++) {
+      for (let i = 0; i < objectArray.length; i++) {
+        objectArray[i] = objectArray[i].increaseHealth()
         objectArray[i] = objectArray[i].reduceHealth()
-      objectArray.forEach(x => console.log(x))
+              objectArray.forEach(x => console.log(x))
+      }
     }
   }
 
