@@ -18,7 +18,8 @@ export class HelloCommand extends CommandRunner {
     var i: number
     for (i = 0; i < 10; i++) {
       // console.log(i)
-      for (let i=0 ; i <objectArray.length ; i++)
+      for (let i=0 ; i <1 ; i++)
+        objectArray[i] = objectArray[i].increaseHealth()        
         objectArray[i] = objectArray[i].reduceHealth()
       objectArray.forEach(x => console.log(x))
     }

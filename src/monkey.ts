@@ -1,5 +1,5 @@
 import { pbkdf2 } from "crypto";
-import { Animal, State } from "./animal"
+import { Animal, Dead, State } from "./animal"
 import { ModuleRef } from "@nestjs/core";
 
 
@@ -9,7 +9,7 @@ export class Monkey extends Animal {
     constructor(name: string, state?: State) {
         super("Monkey", state);
     }
-    lessHealth(): State {
+ lessHealth(): State {
         let val = 0
         val = this.currentState.health
         switch (this.currentState.tag) {
@@ -17,7 +17,6 @@ export class Monkey extends Animal {
                 val = val * 0.9
                 console.log(val)
                 if (val < 70) {
-                    return { tag: "Dead", health: val };
                 }
                 return { tag: "Alive", health: val };
                 break;
@@ -26,7 +25,7 @@ export class Monkey extends Animal {
         }
     }
 
-        increase(): State {
+    increase(): State {
         let val = 0
         val = this.currentState.health
         switch (this.currentState.tag) {
@@ -56,7 +55,11 @@ export class Monkey extends Animal {
         return val;
     }
     increaseHealth(): Animal {
-        return new Animal(this.name, this.currentState);
+        this.currentState = this.increase();
+        console.log(this.currentState);
+        console.log(typeof (this.currentState));
+        var val: Animal = new Monkey(this.name, this.currentState);
+        return val;
     }
 }
 
