@@ -1,7 +1,8 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { AppService } from './app.service';
-import { Animal, Giraffe } from "./animal";
+import { Animal} from "./animal";
 import { Monkey } from "./monkey";
+import { Giraffe } from "./giraffe";
 
 @Command({ name: 'hello', description: 'a hello command' })
 export class HelloCommand extends CommandRunner {
