@@ -1,5 +1,6 @@
 import { pbkdf2 } from "crypto";
-import { Animal, State } from "./animal"
+import { Animal, State } from "./animal" ;
+import {lessHealthState, moreHealthState} from "./monkey"
 
 export class Giraffe extends Animal {
 
@@ -42,14 +43,14 @@ export class Giraffe extends Animal {
 
     reduceHealth(): Animal {
         // this.currentState =  { tag: "Alive", health: 100 };
-        this.currentState = this.lessHealth();
+        this.currentState = lessHealthState(this.currentState) ;
         console.log(this.currentState);
         console.log(typeof (this.currentState));
         var val: Animal = new Giraffe(this.name, this.currentState);
         return val;
     }
     increaseHealth(): Animal {
-        this.currentState = this.increase();
+        this.currentState = moreHealthState(this.currentState) ;
         console.log(this.currentState);
         console.log(typeof (this.currentState));
         var val: Animal = new Giraffe(this.name, this.currentState);

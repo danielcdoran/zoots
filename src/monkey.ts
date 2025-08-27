@@ -2,6 +2,35 @@ import { pbkdf2 } from "crypto";
 import { Animal, Dead, State } from "./animal"
 import { ModuleRef } from "@nestjs/core";
 
+   export function lessHealthState(state: State): State {
+        let val = 0
+        val = state.health
+        switch (state.tag) {
+            case "Alive":
+                val = val * 0.9
+                if (val < 70) {
+                }
+                return { tag: "Alive", health: val };
+                break;
+            case "Dead":
+                return { tag: "Dead", health: val };
+        }
+    }
+   export function moreHealthState(state: State): State {
+        let val = 0
+        val = state.health
+        switch (state.tag) {
+            case "Alive":
+                val = val * 1.20
+                if (val > 100) {
+                    return { tag: "Alive", health: 100 };
+                }
+                return { tag: "Alive", health: val };
+                break;
+            case "Dead":
+                return { tag: "Dead", health: val };
+        }
+    }
 
 
 export class Monkey extends Animal {
@@ -9,7 +38,8 @@ export class Monkey extends Animal {
     constructor(name: string, state?: State) {
         super("Monkey", state);
     }
- lessHealth(): State {
+
+    lessHealth(): State {
         let val = 0
         val = this.currentState.health
         switch (this.currentState.tag) {
@@ -48,14 +78,14 @@ export class Monkey extends Animal {
 
     reduceHealth(): Animal {
         // this.currentState =  { tag: "Alive", health: 100 };
-        this.currentState = this.lessHealth();
+        this.currentState = lessHealthState(this.currentState) ;
         console.log(this.currentState);
         console.log(typeof (this.currentState));
         var val: Animal = new Monkey(this.name, this.currentState);
         return val;
     }
     increaseHealth(): Animal {
-        this.currentState = this.increase();
+        this.currentState = moreHealthState(this.currentState) ;
         console.log(this.currentState);
         console.log(typeof (this.currentState));
         var val: Animal = new Monkey(this.name, this.currentState);
