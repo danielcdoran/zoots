@@ -15,10 +15,10 @@
     "start:prod": "node dist/main",
     "start:command": "node --inspect-brk src/hello./command.ts --runInBand",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-            "test2": "jest --env=node --colors --coverage test",
+    "test": "jest test",
+    "testcoverage": "jest --env=node --colors --coverage test",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --coverage test",
     "test:debug": "node --inspect-brk=localhost:9229 src/hello-command.ts -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
@@ -56,5 +56,4 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
   }
-
 }
