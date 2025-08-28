@@ -1,6 +1,6 @@
 import { pbkdf2 } from "crypto";
 import { Monkey } from "./monkey"
-
+import { ChangeHealthState} from "./utility"
 // type TaggedAction<T extends string> = { tag: T };
 // export type AliveFeed = TaggedAction<"AliveFeed">;
 // export type DeadFeed = TaggedAction<"DeadFeed">;
@@ -32,11 +32,11 @@ export class Animal {
         return this.currentState.health;
     }
     // public reduceHealth(): void {
-    reduceHealth(): Animal {
+    reduceHealth(fn: ChangeHealthState): Animal {
         return new Animal(this.name, this.currentState);
     }
 
-    increaseHealth(): Animal {
+    increaseHealth(fn: ChangeHealthState): Animal {
         return new Animal(this.name, this.currentState);
     }
 }
