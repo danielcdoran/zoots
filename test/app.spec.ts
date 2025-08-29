@@ -7,9 +7,9 @@ import {
   lessHealthState,
   Monkey,
   moreHealthState,
-  monkeyLessHealthRandom,
+  monkeyLessHealthRandom,monkeyMoreHealthRandom,
 } from '../src/monkey';
-import { createRandom } from '../src/utility';
+import { createRandom, monkeyHealthIncrease } from '../src/utility';
 
 describe('Simple expression tests', () => {
   test('Less health', () => {
@@ -54,7 +54,7 @@ describe('Simple expression tests', () => {
     expect(result).toMatchObject(expected);
   });
 
-  test('MOnkey < 30 then state = Dead', () => {
+  test('Monkey < 30 then state = Dead', () => {
     var currentState: State = { tag: 'Alive', health: 25 };
     var result = monkeyLessHealthRandom(currentState);
     var expected = { tag: 'Dead' }; // Checks tag is Dead
@@ -70,4 +70,15 @@ describe('Simple expression tests', () => {
     let result3 = random2();
     expect(result1).not.toEqual(result3); // different function give different random value
   });
+
+  test('Monkey max 100 allowed on increase', () => {
+    let monkeyIncrease = createRandom() ;
+    var currentState: State = { tag: 'Alive', health: 95 };
+    var result = monkeyMoreHealthRandom(monkeyIncrease,currentState);
+    console.log(result)
+    expect(result.health).toEqual(100) ;
+    var expected = { tag: 'Alive' }; // Checks tag is Alive
+    expect(result).toMatchObject(expected);
+  });
+
 });

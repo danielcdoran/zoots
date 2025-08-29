@@ -1,7 +1,7 @@
 import { pbkdf2 } from 'crypto';
 import { Animal, Dead, State } from './animal';
 import { ModuleRef } from '@nestjs/core';
-import { ChangeHealthState } from './utility';
+import { ChangeHealthState ,monkeyHealthIncrease,HealthIncrease} from './utility';
 
 export function monkeyMoreHealthState(state: State): State {
   let val = 0;
@@ -42,6 +42,21 @@ export function monkeyLessHealthRandom(state: State): State {
       val = val * (1 - 0.2 * Math.random());
       if (val < 30) {
         return { tag: 'Dead', health: val };
+      }
+      return { tag: 'Alive', health: val };
+      break;
+    case 'Dead':
+      return { tag: 'Dead', health: val };
+  }
+}
+
+export function monkeyMoreHealthRandom(fn: monkeyHealthIncrease,state: State): State {
+  let val = state.health;
+  switch (state.tag) {
+    case 'Alive':
+      val = val + val*fn()/100; // fn() is percentage increase
+      if (val > 100) {
+        return { tag: 'Alive', health: 100 };
       }
       return { tag: 'Alive', health: val };
       break;
@@ -98,7 +113,7 @@ export class Monkey extends Animal {
   increaseHealth2(): Animal {
     this.currentState = moreHealthState(this.currentState);
     var val: Animal = new Monkey(this.name, this.currentState);
-    return val;
+    return val;    
   }
   increaseHealth(fn: ChangeHealthState): Animal {
     this.currentState = fn(this.currentState);
