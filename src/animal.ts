@@ -1,6 +1,6 @@
 import { pbkdf2 } from "crypto";
 import { Monkey } from "./monkey"
-import { ChangeHealthState} from "./utility"
+import { ChangeHealthState,HealthIncrease, monkeyHealthIncrease} from "./utility"
 // type TaggedAction<T extends string> = { tag: T };
 // export type AliveFeed = TaggedAction<"AliveFeed">;
 // export type DeadFeed = TaggedAction<"DeadFeed">;

@@ -8,7 +8,8 @@ function monkeyFeed() {
   }; // 10% reduction
 }
 
-
+export type HealthIncrease = (monkeyHealthIncrease,State) => number;
+export type monkeyHealthIncrease = () => number;
 export function createRandom() {
   var allowChange: boolean = true;
   var randomVal: number;
