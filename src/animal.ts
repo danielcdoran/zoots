@@ -36,7 +36,7 @@ export class Animal {
         return new Animal(this.name, this.currentState);
     }
 
-    increaseHealth(fn: ChangeHealthState): Animal {
+    increaseHealth(fn: monkeyHealthIncrease): Animal {
         return new Animal(this.name, this.currentState);
     }
 }

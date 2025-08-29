@@ -10,6 +10,8 @@ function monkeyFeed() {
 
 export type HealthIncrease = (monkeyHealthIncrease,State) => number;
 export type monkeyHealthIncrease = () => number;
+
+// This produces a single random value. Its basically a static.
 export function createRandom() {
   var allowChange: boolean = true;
   var randomVal: number;

@@ -20,7 +20,7 @@ export class HelloCommand extends CommandRunner {
     var feedArray: Array<monkeyHealthIncrease> = [createRandom(),createRandom()]
     for (let j = 0; j < 10; j++) {
       for (let i = 0; i < objectArray.length; i++) {
-        objectArray[i] = objectArray[i].increaseHealth(monkeyMoreHealthState)
+        objectArray[i] = objectArray[i].increaseHealth(feedArray[i])
         objectArray[i] = objectArray[i].reduceHealth(monkeyLessHealthRandom)
       }
                     objectArray.forEach(x => console.log(x))

@@ -110,30 +110,11 @@ export class Monkey extends Animal {
     var val: Animal = new Monkey(this.name, this.currentState);
     return val;
   }
-  increaseHealth2(): Animal {
-    this.currentState = moreHealthState(this.currentState);
-    var val: Animal = new Monkey(this.name, this.currentState);
-    return val;    
-  }
-  increaseHealth(fn: ChangeHealthState): Animal {
-    this.currentState = fn(this.currentState);
+
+  increaseHealth(fn: monkeyHealthIncrease): Animal {
+    this.currentState =   monkeyMoreHealthRandom(fn,this.currentState) ;
     var val: Animal = new Monkey(this.name, this.currentState);
     return val;
   }
 }
 
-export class MonkeyDeath extends Monkey {
-  constructor(name: string, state?: State) {
-    super('MonkeyDead', state);
-  }
-
-  getHealth(): number {
-    return super.getHealth();
-  }
-  reduceHealth(): Animal {
-    return new MonkeyDeath('MonkeyDeath', this.currentState);
-  }
-  increaseHealth(): Animal {
-    return new Animal(this.name, this.currentState);
-  }
-}
