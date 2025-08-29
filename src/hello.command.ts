@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { Animal } from "./animal";
 import { Monkey , monkeyLessHealthState, monkeyMoreHealthState,monkeyLessHealthRandom} from "./monkey";
 import { Giraffe } from "./giraffe";
-import { ChangeHealthState} from "./utility"
+import { ChangeHealthState,createRandom,monkeyHealthIncrease} from "./utility"
 
 @Command({ name: 'hello', description: 'a hello command' })
 export class HelloCommand extends CommandRunner {
@@ -17,12 +17,13 @@ export class HelloCommand extends CommandRunner {
     let tom: Animal = new Giraffe("Tommy the Palomino", { tag: "Alive", health: 100 });
     var objectArray: Array<Animal> = [sam, tom]
     var i: number
+    var feedArray: Array<monkeyHealthIncrease> = [createRandom(),createRandom()]
     for (let j = 0; j < 10; j++) {
       for (let i = 0; i < objectArray.length; i++) {
         objectArray[i] = objectArray[i].increaseHealth(monkeyMoreHealthState)
         objectArray[i] = objectArray[i].reduceHealth(monkeyLessHealthRandom)
-              objectArray.forEach(x => console.log(x))
       }
+                    objectArray.forEach(x => console.log(x))
     }
 
 
