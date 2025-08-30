@@ -35,12 +35,12 @@ export function monkeyLessHealthState(state: State): State {
 }
 
 export function monkeyLessHealthRandom(state: State): State {
-  let val = 0;
-  val = state.health;
+    const monkeyDies = 30
+  let val = state.health;
   switch (state.tag) {
     case 'Alive':
       val = val * (1 - 0.2 * Math.random());
-      if (val < 30) {
+      if (val < monkeyDies) {
         return { tag: 'Dead', health: val };
       }
       return { tag: 'Alive', health: val };
@@ -66,12 +66,12 @@ export function monkeyMoreHealthRandom(fn: monkeyHealthIncrease,state: State): S
 }
 
 export function lessHealthState(state: State): State {
-  let val = 0;
-  val = state.health;
+  const monkeyDies = 70
+  let val = state.health;
   switch (state.tag) {
     case 'Alive':
       val = val * 0.9;
-      if (val < 70) {
+      if (val < monkeyDies) {
       }
       return { tag: 'Alive', health: val };
       break;
