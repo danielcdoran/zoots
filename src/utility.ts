@@ -7,6 +7,9 @@ function monkeyFeed() {
     return 0.9 * health;
   }; // 10% reduction
 }
+export function assertUnreachable(x: never): never {
+  throw new Error("Unhandled case: " + x);
+}
 
 export type HealthIncrease = (monkeyHealthIncrease,State) => number;
 export type monkeyHealthIncrease = () => number;

@@ -14,8 +14,9 @@ import { ChangeHealthState,HealthIncrease, monkeyHealthIncrease} from "./utility
 type TaggedState<T extends string> = { tag: T };
 export type Alive = TaggedState<"Alive"> & { health: number };
 export type Dead = TaggedState<"Dead"> & { health: number };
+export type CannotWalk = TaggedState<"CannotWalk"> & { health: number };
 
-export type State = Alive | Dead;
+export type State = Alive | Dead | CannotWalk;
 
 export class Animal {
     readonly name: string;
