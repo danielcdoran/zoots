@@ -69,7 +69,7 @@ export function monkeyMoreHealthRandom(fn: monkeyHealthIncrease, state: State): 
         case 'CannotWalk':
             val = val + val * fn() / 100; // fn() is percentage increase
             if (val > 70) {
-                return { tag: 'Alive', health: 100 };
+                return { tag: 'Alive', health: val };
             }
             return { tag: 'Dead', health: val };
             break;
