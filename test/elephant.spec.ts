@@ -7,7 +7,7 @@ import {
   lessHealthState,
   Elephant,
   moreHealthState,
-  monkeyLessHealthRandom,monkeyMoreHealthRandom,
+  monkeyLessHealthRandom, monkeyMoreHealthRandom,
 } from '../src/elephant';
 import { createRandom, monkeyHealthIncrease } from '../src/utility';
 
@@ -21,27 +21,26 @@ describe('Simple expression tests', () => {
   });
 
   test('Elephant CannotWalk to Dead', () => {
-        let monkeyIncrease = createRandom() ;
+    let monkeyIncrease = createRandom();
     var currentState: State = { tag: 'CannotWalk', health: 20 };
-    var result = monkeyMoreHealthRandom(monkeyIncrease,currentState);
+    var result = monkeyMoreHealthRandom(monkeyIncrease, currentState);
     var expected = { tag: 'Dead' }; // Checks tag is Dead
     expect(result).toMatchObject(expected);
   });
 
-    test('Elephant CannotWalk to Alive', () => {
-        let monkeyIncrease = createRandom() ;
+  test('Elephant CannotWalk to Alive', () => {
+    let monkeyIncrease = createRandom();
     var currentState: State = { tag: 'CannotWalk', health: 69 };
-    var result = monkeyMoreHealthRandom(monkeyIncrease,currentState);
+    var result = monkeyMoreHealthRandom(monkeyIncrease, currentState);
     var expected = { tag: 'Alive' }; // Checks tag is Dead
     expect(result).toMatchObject(expected);
   });
 
-//       test('Elephant CannotWalk to CannotWalk', () => {
-//         let monkeyIncrease = createRandom() ;
-//     var currentState: State = { tag: 'CannotWalk', health: 22 };
-//     var result = monkeyMoreHealthRandom(monkeyIncrease,currentState);
-//     var expected = { tag: 'CannotWalk' }; // Checks tag is Dead
-//     expect(result).toMatchObject(expected);
-//   });
-
+  test('Elephant CannotWalk to CannotWalk with decrease - should remain as CannotWalk', () => {
+    let monkeyIncrease = createRandom();
+    var currentState: State = { tag: 'CannotWalk', health: 22 };
+    var result = monkeyLessHealthRandom(currentState);
+    var expected = { tag: 'CannotWalk' }; // Checks tag is Dead
+    expect(result).toMatchObject(expected);
+  });
 });
