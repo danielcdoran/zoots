@@ -1,6 +1,10 @@
+commit 4
+Another Name
 commit 3
 commit2
 commit1
+
+git config --global user.name "Your Name"
 
 npm run build
 npm run start:cli hello runs the hello command
