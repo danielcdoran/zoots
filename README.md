@@ -5,7 +5,13 @@ commit 3
 commit2
 commit1
 
+collect data
+http://localhost:4000/projects
+advanced | Blueprints | manual
+seelct manualgithub | collect data
+
 git config --global user.name "Your Name"
+If we change the user.name it appears as different in commit
 
 npm run build
 npm run start:cli hello runs the hello command
