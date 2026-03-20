@@ -13,6 +13,7 @@ commit1
 git config --global user.name "Your Name"
 
 npm run build
+
 npm run start:cli hello runs the hello command
 WORKDIR added to enalbe git
 
